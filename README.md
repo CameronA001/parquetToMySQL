@@ -6,7 +6,8 @@ Make a copy of the hugging face repo (https://huggingface.co/datasets/SimulaMet/
 
 In order to deal with duplicates data is read into temporary tables, and then SQL commands are used to insert ignore into the permanent table. After reading into the permanent tables, truncate the temporary ones. This ensures faster/cleaner reads from the parquet files on the next file pull.
 
-sling run agents.yml
-sling run comments.yml
-sling run posts.yml
-sling run submolts.yml
+Run createTables.sql before doing anything as well. Sling auto creates tables, but mysql requires the permanent tables to be made in order to insert into them.
+
+Should be such that once you have environment set up you are able to run the below command in terminal after you cd into the "yamlFiles" folder, and then run the whole "queries.sql" file after the sling command finishes.
+
+sling run submolts.yml; sling run agents.yml; sling run posts.yml; sling run comments.yml
