@@ -1,0 +1,19 @@
+source: LOCAL
+target: MYSQL
+
+streams:
+  "C:/Users/cams9/SchoolWork/RESEARCH/moltbook-observatory-archive/data/comments/*.parquet":
+    object: "moltbook_observatory.comments_tmp"
+    mode: snapshot
+
+    primary_key: id
+
+    source_options:
+      empty_as_null: true
+
+    target_options:
+      batch_limit: 10000
+      use_bulk: true
+      column_casing: snake
+      column_types:
+        id: varchar(255)

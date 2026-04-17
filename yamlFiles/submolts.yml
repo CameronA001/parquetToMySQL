@@ -1,0 +1,17 @@
+source: LOCAL
+target: MYSQL
+
+streams:
+  "C:/Users/cams9/SchoolWork/RESEARCH/moltbook-observatory-archive/data/submolts/*.parquet":
+    object: "moltbook_observatory.submolts_tmp"
+    mode: snapshot
+
+    primary_key: name
+
+    source_options:
+      empty_as_null: true
+
+    target_options:
+      column_casing: snake
+      column_types:
+        id: varchar(255)

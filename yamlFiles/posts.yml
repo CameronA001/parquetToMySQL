@@ -1,0 +1,21 @@
+# agents.yml
+
+source: LOCAL
+target: MYSQL
+
+streams:
+  "C:/Users/cams9/SchoolWork/RESEARCH/moltbook-observatory-archive/data/posts/*.parquet":
+    object: "moltbook_observatory.posts_tmp"
+    mode: snapshot
+
+    primary_key: id
+
+    source_options:
+      empty_as_null: true
+
+    target_options:
+      batch_limit: 5000
+      use_bulk: true
+      column_casing: snake
+      column_types:
+        id: varchar(255)
