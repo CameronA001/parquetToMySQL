@@ -4,7 +4,7 @@ This repo is meant to work with sling, follow the setup guide here: https://slin
 
 Make a copy of the hugging face repo (https://huggingface.co/datasets/SimulaMet/moltbook-observatory-archive) on a level above this one, and pull ocassionally in order to get new parquet files. Data is located under "C:.../moltbook-observatory-archive/data/(table name)/\*.parquet". You will have to change the path individually for each yml file depending on your system.
 
-In order to deal with duplicates data is read into temporary tables, and then SQL commands are used to insert ignore into the permanent table. After reading into the permanent tables, truncate the temporary ones. This ensures faster/cleaner reads from the parquet files on the next file pull.
+In order to deal with duplicates and foreign key constraints, data is read into temporary tables, and then SQL commands are used to insert ignore into the permanent table. After reading into the permanent tables, truncate the temporary ones. This ensures faster/cleaner reads from the parquet files on the next file pull.
 
 Run createTables.sql before doing anything as well. Sling auto creates tables, but mysql requires the permanent tables to be made in order to insert into them.
 
