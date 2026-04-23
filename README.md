@@ -10,4 +10,6 @@ Run createTables.sql before doing anything as well. Sling auto creates tables, b
 
 Should be such that once you have environment set up you are able to run the below command in terminal after you cd into the "yamlFiles" folder, and then run the whole "queries.sql" file after the sling command finishes.
 
+MAKE SURE THAT THE TEMPORARY TABLES ARE EMPTY BEFORE READIGN IN THE PARQUET FILES. SLING DOES NOT HANDLE DUPLICATES.
+
 sling run submolts.yml; sling run agents.yml; sling run posts.yml; sling run comments.yml
